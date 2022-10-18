@@ -7,7 +7,7 @@ library(reshape2)
 ######################
 
 # import the data from `gen/data-preparation/aggregated_df.csv`
-df <- read.csv("aggregated_df.csv")
+df <- read.csv("gen/temp/aggregated_df.csv")
 
 # convert the `date` column into date format.
 df$date <- as.Date(df$date)
@@ -16,7 +16,7 @@ df$date <- as.Date(df$date)
 df_groupby <- df %>% group_by(date) %>% summarise(num_reviews = sum(num_reviews))
 
 # plot the chart and store the visualisation.
-pdf("plot_all.pdf")
+pdf("gen/output/plot_all.pdf")
 plot(x = df_groupby$date, 
      y = df_groupby$num_reviews, 
      type = "l", 
